@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Rheumatology Brand Builder</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #1c2434;
+      --muted: #5b6475;
+      --brand: #2d64ff;
+      --brand-soft: #e7efff;
+      --ok: #0e9f6e;
+      --border: #dbe2f2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      background: linear-gradient(120deg, #173172, #2d64ff);
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 8px 26px rgba(23, 49, 114, 0.22);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { margin-top: 0; }
+
+    header p {
+      margin-bottom: 0;
+      opacity: 0.95;
+      max-width: 720px;
+    }
+
+    .summary-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      margin: 16px 0 22px;
+    }
+
+    .metric {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--brand);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .checklist-group { margin-bottom: 18px; }
+
+    .checklist-group h3 {
+      margin-bottom: 8px;
+      color: #152a61;
+    }
+
+    .checklist-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid #eef2fb;
+    }
+
+    .checklist-item:last-child { border-bottom: none; }
+
+    input[type="checkbox"] {
+      margin-top: 4px;
+      accent-color: var(--ok);
+      transform: scale(1.2);
+    }
+
+    .item-text {
+      flex: 1;
+    }
+
+    .item-text small {
+      display: block;
+      color: var(--muted);
+    }
+
+    .done .item-text {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 12px;
+      background: #e8eefb;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #2d64ff, #0e9f6e);
+      transition: width 0.2s ease;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.85rem;
+      background: var(--brand-soft);
+      color: #193982;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    button {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover { background: #f4f7ff; }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI in Rheumatology: Personal Brand + Mastery Plan</h1>
+      <p>
+        A practical roadmap to become known as a rheumatologist doing cutting-edge, ethical, and clinically useful work with AI.
+        Check off items as you complete them—your progress is saved in this browser.
+      </p>
+    </header>
+
+    <section class="summary-grid">
+      <div class="metric">
+        <span>Overall completion</span>
+        <strong id="percent-complete">0%</strong>
+      </div>
+      <div class="metric">
+        <span>Tasks done</span>
+        <strong><span id="done-count">0</span>/<span id="total-count">0</span></strong>
+      </div>
+      <div class="metric">
+        <span>Focus this week</span>
+        <strong>Learn + Publish</strong>
+      </div>
+      <div class="metric">
+        <span>Current positioning</span>
+        <strong>Clinician-Builder</strong>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Your positioning statement</h2>
+      <p>
+        “I translate advanced AI into practical rheumatology care, education, and research—with a focus on safety,
+        equity, and real patient impact.”
+      </p>
+      <span class="pill">Clinical AI</span>
+      <span class="pill">Medical education</span>
+      <span class="pill">Research translation</span>
+      <span class="pill">Ethical deployment</span>
+    </section>
+
+    <section class="card">
+      <h2>12-month learning pathway</h2>
+      <div class="checklist-group">
+        <h3>Phase 1 (Months 1-2): AI foundations for clinicians</h3>
+        <div id="phase1"></div>
+      </div>
+      <div class="checklist-group">
+        <h3>Phase 2 (Months 3-5): Applied AI in rheumatology workflows</h3>
+        <div id="phase2"></div>
+      </div>
+      <div class="checklist-group">
+        <h3>Phase 3 (Months 6-9): Build a visible body of work</h3>
+        <div id="phase3"></div>
+      </div>
+      <div class="checklist-group">
+        <h3>Phase 4 (Months 10-12): Thought leadership and scale</h3>
+        <div id="phase4"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Brand and content engine</h2>
+      <div class="checklist-group">
+        <h3>Weekly cadence</h3>
+        <div id="weekly"></div>
+      </div>
+      <div class="checklist-group">
+        <h3>Portfolio projects to become known for</h3>
+        <div id="projects"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Progress</h2>
+      <div class="progress-track" aria-label="Completion progress">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p id="progress-label">0 of 0 tasks completed.</p>
+      <button id="reset-progress" type="button">Reset all checkboxes</button>
+      <p class="footer-note">Tip: review this page every Sunday and plan next week from unfinished items.</p>
+    </section>
+  </div>
+
+  <script>
+    const plan = {
+      phase1: [
+        ["Finish Harvard AI in Healthcare and write one-page reflection", "Turn course concepts into your own clinical viewpoint."],
+        ["Learn key AI concepts (LLMs, predictive models, evaluation metrics, bias)", "Understand enough to question claims and lead informed discussions."],
+        ["Complete a short Python + data analysis refresher", "Use notebooks for simple healthcare datasets and charts."],
+        ["Create your AI ethics checklist for rheumatology use-cases", "Include privacy, bias, explainability, and safety triggers."]
+      ],
+      phase2: [
+        ["Map 10 real rheumatology tasks where AI could help", "Prioritize high-friction, repetitive, or decision-support tasks."],
+        ["Prototype prompt workflows for patient education and documentation", "Build structured prompts and compare quality across versions."],
+        ["Learn basics of validation for clinical AI tools", "Sensitivity, specificity, calibration, and external validity."],
+        ["Network with one AI researcher and one health-tech builder each month", "Build collaboration pipeline early."]
+      ],
+      phase3: [
+        ["Publish 2 posts/month on AI x rheumatology", "Use cases, lessons, practical frameworks, and failures."],
+        ["Build one demo project (e.g., triage assistant mockup)", "A safe prototype that shows your clinician-builder identity."],
+        ["Give one local talk or webinar", "Share practical and realistic AI adoption pathways."],
+        ["Start a monthly 'AI in Rheum' newsletter", "Curate papers, tools, and implementation insights."]
+      ],
+      phase4: [
+        ["Submit abstract/manuscript on AI-related rheumatology work", "Convert practical work into academic signal."],
+        ["Co-create a guideline/checklist for responsible AI use in clinic", "Collaborate with peers or society interest groups."],
+        ["Mentor trainees on AI mini-projects", "Multiply impact and strengthen reputation."],
+        ["Define your 3-year vision and opportunities", "Speaking, advisory roles, partnerships, and grant themes."]
+      ],
+      weekly: [
+        ["2 hours: technical learning", "Course notes, papers, tools, mini-experiments."],
+        ["2 hours: project building", "Advance one concrete AI-enabled rheumatology deliverable."],
+        ["1 hour: writing/public content", "LinkedIn post, short article, or newsletter section."],
+        ["1 hour: network", "Reach out to one collaborator and one mentor."]
+      ],
+      projects: [
+        ["Patient-friendly explainer generator for common rheum conditions", "Demonstrates communication, safety, and prompt quality."],
+        ["RA flare risk concept model (educational simulation)", "Showcases clinical reasoning plus data/AI thinking."],
+        ["Clinic workflow map with AI opportunities and safeguards", "Practical implementation lens for real-world care."],
+        ["'AI myths in rheumatology' talk deck", "Builds authority through nuanced, balanced thought leadership."]
+      ]
+    };
+
+    const STORAGE_KEY = "ai-rheum-brand-checklist-v1";
+
+    function renderSection(sectionId, items, state) {
+      const container = document.getElementById(sectionId);
+      container.innerHTML = "";
+
+      items.forEach(([title, note], idx) => {
+        const key = `${sectionId}-${idx}`;
+        const checked = Boolean(state[key]);
+
+        const row = document.createElement("label");
+        row.className = `checklist-item ${checked ? "done" : ""}`;
+
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = checked;
+        cb.dataset.key = key;
+
+        const text = document.createElement("div");
+        text.className = "item-text";
+        text.innerHTML = `<strong>${title}</strong><small>${note}</small>`;
+
+        cb.addEventListener("change", () => {
+          state[key] = cb.checked;
+          saveState(state);
+          row.classList.toggle("done", cb.checked);
+          updateProgress();
+        });
+
+        row.appendChild(cb);
+        row.appendChild(text);
+        container.appendChild(row);
+      });
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function updateProgress() {
+      const all = [...document.querySelectorAll('input[type="checkbox"]')];
+      const done = all.filter((el) => el.checked).length;
+      const total = all.length;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+
+      document.getElementById("done-count").textContent = done;
+      document.getElementById("total-count").textContent = total;
+      document.getElementById("percent-complete").textContent = `${pct}%`;
+      document.getElementById("progress-fill").style.width = `${pct}%`;
+      document.getElementById("progress-label").textContent = `${done} of ${total} tasks completed.`;
+    }
+
+    function init() {
+      const state = loadState();
+      Object.entries(plan).forEach(([sectionId, items]) => renderSection(sectionId, items, state));
+
+      document.getElementById("reset-progress").addEventListener("click", () => {
+        if (!confirm("Reset all checklist progress?")) return;
+        localStorage.removeItem(STORAGE_KEY);
+        init();
+      });
+
+      updateProgress();
+    }
+
+    init();
+  </script>
+</body>
+</html>
